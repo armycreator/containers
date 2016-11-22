@@ -1,0 +1,49 @@
+version: '2'
+
+services:
+    db:
+        image: mysql
+        ports: 
+            - 33306:3306
+        volumes:
+            - "./.data/db:/var/lib/mysql"
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_DATABASE: armycreator
+
+    # php7:
+    #     build: php7-fpm
+    #     ports:
+    #         - 9070:9070
+    #     links:
+    #         - db:mysqldb
+    #     volumes:
+    #         - "../armycreator:/var/www/armycreator"
+    #         - "./logs/armycreator:/var/www/armycreator/app/logs"
+
+    php5:
+        build: php5-fpm
+        ports:
+            - 39000:9000
+        links:
+            - db:mysqldb
+        volumes:
+            - "../armycreator:/var/www/armycreator"
+            - "./logs/armycreator:/var/www/armycreator/app/logs"
+
+        # command: php /var/www/armycreator/app/console doctrine:migrations:migrate
+
+    apache:
+        build: apache
+        ports: 
+            - 81:80
+            - 444:443
+        links:
+            - php5
+        volumes_from:
+            - php5
+        volumes:
+            - "./logs/apache2/:/var/log/apache2"
+        environment:
+            FPM_HOST: php5:9000
+
