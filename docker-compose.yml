@@ -28,7 +28,7 @@ services:
         links:
             - db:mysqldb
         volumes:
-            - "../armycreator:/var/www/armycreator"
+            - "../armycreator-website:/var/www/armycreator"
             - "./logs/armycreator:/var/www/armycreator/app/logs"
 
         # command: php /var/www/armycreator/app/console doctrine:migrations:migrate
