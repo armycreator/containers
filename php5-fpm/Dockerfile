@@ -35,6 +35,27 @@ RUN "date"
 # Copy php config
 COPY config/php.ini /usr/local/etc/php/
 
-ENV COMPOSER_ALLOW_SUPERUSER=1
+ENV COMPOSER_ALLOW_SUPERUSER=1 \
+    SYMFONY__DATABASE_DRIVER="pdo_mysql" \
+    SYMFONY__DATABASE_HOST="mysqldb" \
+    SYMFONY__DATABASE_PORT="3306" \
+    SYMFONY__DATABASE_NAME="armycreator" \
+    SYMFONY__DATABASE_USER="root" \
+    SYMFONY__DATABASE_PASSWORD="root" \
+    SYMFONY__DATABASE_NAME_FORUM="armycreator" \
+    SYMFONY__DATABASE_NAME_ACL="armycreator" \
+    SYMFONY__MAILER_TRANSPORT="smtp" \
+    SYMFONY__MAILER_HOST="localhost" \
+    SYMFONY__MAILER_USER="" \
+    SYMFONY__MAILER_PASSWORD="" \
+    SYMFONY__LOCALE="fr" \
+    SYMFONY__SECRET="QKnWBZZDHlfyBlvNrNDe" \
+    SYMFONY__FORUM_SID="forum_ac_sid" \
+    SYMFONY__DOMAIN__WEBSITE="localhost"
+    #SYMFONY__DOMAIN__API="api.armycreator.net" \
+    #SYMFONY__DOMAIN__OAUTH2="oauth2.armycreator.net" \
+    #donation_parameters:•
+    #    cmd=_s-xclick
+    #    hosted_button_id=L7PK6V4R4LPHG
 
 WORKDIR /var/www/armycreator
