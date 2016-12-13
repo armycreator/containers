@@ -35,9 +35,6 @@ RUN "date"
 # Copy php config
 COPY config/php.ini /usr/local/etc/php/
 
+ENV COMPOSER_ALLOW_SUPERUSER=1
+
 WORKDIR /var/www/armycreator
-
-# Install assets dependencies
-RUN npm install
-RUN bower install --allow-root
-
