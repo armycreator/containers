@@ -17,7 +17,7 @@ function node() {
 }
 
 function bower() {
-    node "./node_modules/.bin/bower $*"
+    node "./node_modules/.bin/bower --allow-root $*"
 }
 
 function npm() {
@@ -44,6 +44,8 @@ function init() {
     gassetic build
     symfony doctrine:migrations:migrate  --no-interaction
     # docker-compose exec php5 php app/console doctrine:migrations:migrate 
+
+    docker-compose exec php5 cp -R ./src/Sitioweb/Bundle/ExternalJsBundle/Resources/public/elusive-iconfont/fonts web/tmp/css/fonts
 }
 
 COMMAND=$1
