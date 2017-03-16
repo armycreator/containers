@@ -12,7 +12,7 @@ The only one (well two) you need is [docker and docker-compose](https://docs.doc
 * In the armycreator-containers folder, execute:
   * docker-compose build
   * docker-compose up
-  * make
+  * ./build.sh init
 
 ## Launch website
 Open `http://localhost:81`.
