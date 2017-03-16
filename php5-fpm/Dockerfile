@@ -24,9 +24,6 @@ RUN composer --version
 
 RUN echo 'alias sf="php app/console"' >> ~/.bashrc
 
-# Install bower
-RUN npm install -g bower
-
 # Set timezone
 RUN rm /etc/localtime
 RUN ln -s /usr/share/zoneinfo/Europe/Paris /etc/localtime
