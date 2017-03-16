@@ -12,19 +12,36 @@ function symfony() {
     docker-compose exec php5 php app/console $*
 }
 
+function node() {
+    docker run -v "$VOLUME" -w $WORKING_DIR --rm node:6 $*
+}
+
 function bower() {
-    docker run -v "$VOLUME" -w $WORKING_DIR --rm node:6 "./node_modules/.bin/bower $*"
+    node "./node_modules/.bin/bower $*"
 }
 
 function npm() {
-    docker run -v "$VOLUME" -w $WORKING_DIR --rm node:6 npm $*
+    node npm $*
+}
+
+function gassetic() {
+    node "./node_modules/.bin/gassetic $*"
+}
+
+function initCache() {
+    docker-compose exec php5 chmod -R 777 app/cache
+    docker-compose exec php5 chmod -R 777 app/logs
+    docker-compose exec php5 chmod -R 777 web/forum/cache
 }
 
 function init() {
     composer install
+
+    initCache
     # docker run -v "$VOLUME" -w $WORKING_DIR --rm composer:latest install
     npm install
     bower install
+    gassetic build
     symfony doctrine:migrations:migrate  --no-interaction
     # docker-compose exec php5 php app/console doctrine:migrations:migrate 
 }
@@ -43,8 +60,11 @@ then
     symfony $*
 elif [ $COMMAND = "npm" ]
 then
-    symfony $*
+    npm $*
+elif [ $COMMAND = "gassetic" ]
+then
+    gassetic $*
 elif [ $COMMAND = "bower" ]
 then
-    symfony $*
+    bower $*
 fi
