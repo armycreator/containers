@@ -1,14 +1,10 @@
 FROM php:5.6-fpm
 
-# COnfigure NodeJS
-RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
-
 # Install container dependencies
 RUN apt-get update && apt-get install -y \
   git \
   unzip \
   libmagickwand-dev \
-  nodejs \
   && rm -rf /var/lib/apt/lists/*
 
 # Install PHP extensions
@@ -48,9 +44,9 @@ ENV COMPOSER_ALLOW_SUPERUSER=1 \
     SYMFONY__LOCALE="fr" \
     SYMFONY__SECRET="QKnWBZZDHlfyBlvNrNDe" \
     SYMFONY__FORUM_SID="forum_ac_sid" \
-    SYMFONY__DOMAIN__WEBSITE="localhost"
-    #SYMFONY__DOMAIN__API="api.armycreator.net" \
-    #SYMFONY__DOMAIN__OAUTH2="oauth2.armycreator.net" \
+    SYMFONY__DOMAIN__WEBSITE="localhost" \
+    SYMFONY__DOMAIN__API="api.localhost" \
+    SYMFONY__DOMAIN__OAUTH2="oauth2.localhost" 
     #donation_parameters:•
     #    cmd=_s-xclick
     #    hosted_button_id=L7PK6V4R4LPHG
