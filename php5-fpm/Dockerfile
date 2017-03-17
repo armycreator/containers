@@ -45,8 +45,8 @@ ENV COMPOSER_ALLOW_SUPERUSER=1 \
     SYMFONY__SECRET="QKnWBZZDHlfyBlvNrNDe" \
     SYMFONY__FORUM_SID="forum_ac_sid" \
     SYMFONY__DOMAIN__WEBSITE="localhost" \
-    SYMFONY__DOMAIN__API="api.localhost" \
-    SYMFONY__DOMAIN__OAUTH2="oauth2.localhost" 
+    SYMFONY__DOMAIN__API="api.127.0.0.1.xip.io" \
+    SYMFONY__DOMAIN__OAUTH2="oauth2.127.0.0.1.xip.io" 
     #donation_parameters:•
     #    cmd=_s-xclick
     #    hosted_button_id=L7PK6V4R4LPHG
