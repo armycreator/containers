@@ -1,7 +1,15 @@
 Armycreator containers
 ============
 
-# Dependencies
+This repository tell us how to develop for armycreator website.
+
+## Useful resources
+Slack: [armycreator](https://armycreator.slack.com/)
+
+[Trello board](https://trello.com/b/ybwzcEjR/armycreator)
+
+
+## Dependencies
 The armycreator website is managed by docker to avoid the complexity of installing a lots of dependencies.
 The only one (well two) you need is [docker and docker-compose](https://docs.docker.com/compose/install/)
 
