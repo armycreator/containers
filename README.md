@@ -3,11 +3,8 @@ Armycreator containers
 
 This repository tell us how to develop for armycreator website.
 
-## Useful resources
+## How to communicate
 Slack: [armycreator](https://armycreator.slack.com/)
-
-[Trello board](https://trello.com/b/ybwzcEjR/armycreator)
-
 
 ## Dependencies
 The armycreator website is managed by docker to avoid the complexity of installing a lots of dependencies.
@@ -33,6 +30,13 @@ Connect to site with user and password: `admin` / `admin`
 The domain name will be `http://api.127.0.0.1.xip.io` and `http://oauth2.127.0.0.1.xip.io`
 
 More documentation to come...
+
+## How do I manage assets, cache, where is the symfony command, etc.
+As everything is managed by docker and docker-compose, you can do everything with them, but the `build.sh` file is here to help you do anything you want.
+
+For exemple, if you want to run `composer require foo/bar`, you can just run `./build.sh composer require foo/bar`, `./build.sh npm install` for installing npm dependencies, `./build.sh sf cache:clear` for clearing symfony cache, etc.
+
+If a command is missing, the best thing to do is to look into the `build.sh` file.
 
 
 ## Troubleshooting
