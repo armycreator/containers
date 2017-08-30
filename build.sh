@@ -5,11 +5,11 @@ VOLUME="$(pwd)/../armycreator-website:$WORKING_DIR"
 
 function composer() {
     # docker run -v "$VOLUME" -w $WORKING_DIR --rm composer:latest composer $1
-    docker-compose exec php5 php /usr/local/bin/composer $*
+    docker-compose exec php7.0 php /usr/local/bin/composer $*
 }
 
 function symfony() {
-    docker-compose exec php5 php app/console $*
+    docker-compose exec php7.0 php app/console $*
 }
 
 function node() {
@@ -29,9 +29,9 @@ function gassetic() {
 }
 
 function initCache() {
-    docker-compose exec php5 chmod -R 777 app/cache
-    docker-compose exec php5 chmod -R 777 app/logs
-    docker-compose exec php5 chmod -R 777 web/forum/cache
+    docker-compose exec php7.0 chmod -R 777 app/cache
+    docker-compose exec php7.0 chmod -R 777 app/logs
+    docker-compose exec php7.0 chmod -R 777 web/forum/cache
 }
 
 function init() {
@@ -43,9 +43,9 @@ function init() {
     bower install
     gassetic build
     symfony doctrine:migrations:migrate  --no-interaction
-    # docker-compose exec php5 php app/console doctrine:migrations:migrate 
+    # docker-compose exec php7.0 php app/console doctrine:migrations:migrate 
 
-    docker-compose exec php5 cp -R ./src/Sitioweb/Bundle/ExternalJsBundle/Resources/public/elusive-iconfont/fonts web/tmp/css/fonts
+    docker-compose exec php7.0 cp -R ./src/Sitioweb/Bundle/ExternalJsBundle/Resources/public/elusive-iconfont/fonts web/tmp/css/fonts
 }
 
 COMMAND=$1
